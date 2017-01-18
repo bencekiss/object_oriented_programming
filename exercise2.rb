@@ -1,9 +1,9 @@
 class Cat
 
   def initialize(name, preferred_food, meal_time)
-    @name = name
-    @preferred_food = preferred_food
-    @meal_time = meal_time
+    @name = name.capitalize
+    @preferred_food = preferred_food.capitalize
+    @meal_time = meal_time.to_i
   end
 
   def eats_at
@@ -16,8 +16,16 @@ class Cat
     end
   end
 
+  def meow
+    "MYYEEOOOOW name is #{@name} and I eat #{@preferred_food} at #{eats_at}"
+  end
+
 end
 
 
 first_cat = Cat.new("Garfield", "whiskas", 22)
-second_cat = Cat.new("Sylvester", "friskies", 8)
+second_cat = Cat.new("Sylvester", "friskies", 12)
+
+
+puts first_cat.meow
+puts second_cat.meow
