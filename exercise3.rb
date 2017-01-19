@@ -31,19 +31,23 @@ class Player
   end
 
   def collect_treasure(coins)
-    if coins > 9
-      return "Don't try to hack me. The biggest treasure to collect at once is 9 coins."
-    end
+    # if coins > 9
+    #   return "Don't try to hack me. The biggest treasure to collect at once is 9 coins."
+    # end
 
     @gold_coins += coins
 
+
     if @gold_coins >= 10
-      @score += 1
+      temp = @gold_coins / 10
+      @score += temp
+
       if @score >= 10
-        level_up
-        @score -= 10
+        tempscore = @score / 10
+        tempscore.times {level_up}
+        @score -= tempscore * 10
       end
-      @gold_coins -= 10
+      @gold_coins -= temp * 10
     end
 
   end
@@ -57,5 +61,5 @@ p1 = Player.new
 51.times {p1.do_battle}
 puts "Health points: #{p1.health_points}, lives: #{p1.lives}"
 
-12.times {p1.collect_treasure(9)}
+p1.collect_treasure(134)
 puts "Gold coins: #{p1.gold_coins}, Score:#{p1.score}, lives: #{p1.lives}"
